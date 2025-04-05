@@ -92,9 +92,18 @@ def open_edit_modal(event):
 
     edit_modal = EditModal(root, item_id, current_values, save_changes)
 
+def toggle_fullscreen(event=None):
+    if root.attributes('-fullscreen'):
+        root.attributes('-fullscreen', False)
+    else:
+        root.attributes('-fullscreen', True)
+
 # Set up the main application window
 root = tk.Tk()
 root.title("Business Data Manager")
+
+# Bind F11 key to toggle fullscreen mode
+root.bind("<F11>", toggle_fullscreen)
 
 # Create a Treeview to display the data
 tree = ttk.Treeview(root, columns=("ID", "Company Name", "Latitude", "Longitude", "Caption", "Address", "Link", "OGRN", "INN", "OKPO", "Rating", "Yandex", "2GIS", "Otzovik", "Phone", "Site URL", "Email"), show="headings")
